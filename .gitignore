@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/LoginDemo
+/.vs
+/LoginDemo/.vs
+/LoginDemo/LearningSelenium/bin/Debug/net7.0
+/LoginDemo/LearningSelenium/obj
+/LoginDemo/LearningSelenium/GlobalUsings.cs
+/LoginDemo/LearningSelenium/LearningSelenium.csproj
+/LoginDemo/LoginSF/bin/Debug/net6.0
+/LoginDemo/LoginSF
+/LoginDemo/packages
+/LoginDemo/Reg
+*.sln
