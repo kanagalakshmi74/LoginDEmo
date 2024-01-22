@@ -20,14 +20,14 @@ namespace LoginSF.StepDefinitions
             driver.Manage().Window.Maximize();
         }
 
-        [When(@"I open Login Page")]
-        public void WhenIOpenLoginPage()
+        [When(@"user open Login Page")]
+        public void WhenUserOpenLoginPage()
         {
             driver.Navigate().GoToUrl(baseurl);
         }
 
-        [When(@"I enter the username '([^']*)', password '([^']*)' and confirm_password '([^']*)'")]
-        public void WhenIEnterTheUsernamePasswordAndConfirm_Password(string username, string password, string cpassword)
+        [When(@"user enter the username '([^']*)', password '([^']*)' and confirm_password '([^']*)'")]
+        public void WhenUserEnterTheUsernamePasswordAndConfirm_Password(string username, string password, string cpassword)
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
@@ -38,12 +38,9 @@ namespace LoginSF.StepDefinitions
             IWebElement cpwd = driver.FindElement(By.Id("cpassword"));
             cpwd.SendKeys(cpassword);
         }
-
-        [When(@"password '([^']*)' and confirm_password '([^']*)' are not same")]
-        public void WhenPasswordAndConfirm_PasswordAreNotSame(string password, string cpassword)
+        [When(@"user enter different password '([^']*)' and confirm_password '([^']*)'")]
+        public void WhenUserEnterDifferentPasswordAndConfirm_Password(string password, string cpassword)
         {
-            Assert.IsNotNull(password);
-            Assert.IsNotNull(cpassword);
             ScenarioContext.Current["incorrect_pwd"] = password;
             ScenarioContext.Current["incorrect_cpwd"] = cpassword;
             driver.FindElement(By.Id("btn-sub")).Click();
@@ -54,13 +51,15 @@ namespace LoginSF.StepDefinitions
         {
             string password = ScenarioContext.Current["incorrect_pwd"].ToString();
             string cpassword = ScenarioContext.Current["incorrect_cpwd"].ToString();
-            Assert.AreNotEqual(password, cpassword);
+
+            bool s = (password == cpassword) ? true : false;
+            Assert.IsFalse(s, "password and confirm password should not be same");
+
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             driver.Navigate().GoToUrl("https://localhost:44318/Error.html");
         }
-
-        [When(@"password '([^']*)' and confirm_password '([^']*)' are same")]
-        public void WhenPasswordAndConfirm_PasswordAreSame(string password, string cpassword)
+        [When(@"user enter same password '([^']*)' and confirm_password '([^']*)'")]
+        public void WhenUserEnterSamePasswordAndConfirm_Password(string password, string cpassword)
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             driver.Navigate().Back();
@@ -74,7 +73,7 @@ namespace LoginSF.StepDefinitions
         {
             string password = ScenarioContext.Current["correct_pwd"].ToString();
             string cpassword = ScenarioContext.Current["correct_cpwd"].ToString();
-            Assert.AreEqual(password, cpassword);
+            Assert.AreEqual(password, cpassword, "password and confirm password should be same");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             driver.Navigate().GoToUrl("https://localhost:44318/Success.html");
         }
