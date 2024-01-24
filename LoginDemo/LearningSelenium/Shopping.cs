@@ -26,109 +26,109 @@ namespace LearningSelenium
         [Test]
         public void TestLoginFail()
         {
-            Login lg = new Login(driver);
+            Login login= new Login(driver);
             driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-            lg.enterUserName("admin");
-            lg.enterPassword("admin1234");
-            lg.LoginClick();
+            login.EnterUserName("admin");
+            login.EnterPassword("admin1234");
+            login.LoginClick();
 
             WebDriverWait wait= new WebDriverWait(driver,TimeSpan.FromSeconds(20));
-            wait.Until(d => lg.getErrorMessage());
-            Assert.AreEqual("Invalid credentials", lg.getErrorMessage(),"username or password is incorrect");
+            wait.Until(d => login.GetErrorMessage());
+            Assert.AreEqual("Invalid credentials", login.GetErrorMessage(),"username or password is incorrect");
 
         }
 
         [Test]
         public void TestLoginSuccess()
         {
-            Login lg = new Login(driver);
+            Login login = new Login(driver);
             driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-            lg.enterUserName("Admin");
-            lg.enterPassword("admin123");
-            lg.LoginClick();
+            login.EnterUserName("Admin");
+            login.EnterPassword("admin123");
+            login.LoginClick();
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until(d => lg.getSuccessMessage());
-            Assert.AreEqual("Dashboard", lg.getSuccessMessage(), "Dashboard not loading...");
+            wait.Until(d => login.GetSuccessMessage());
+            Assert.AreEqual("Dashboard", login.GetSuccessMessage(), "Dashboard not loading...");
 
         }
 
         [Test]
         public void TestLogFail()
         {
-            Login lg = new Login(driver);
+            Login login = new Login(driver);
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-            lg.enterSwagUserName("user");
-            lg.enterSwagPassword("secert_sauce");
-            lg.SwagLoginClick();
+            login.EnterSwagUserName("user");
+            login.EnterSwagPassword("secert_sauce");
+            login.SwagLoginClick();
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until(d => lg.getSwagErrorMessage());
-            Assert.AreEqual("Epic sadface: Username and password do not match any user in this service", lg.getSwagErrorMessage(), "username or password is incorrect");
+            wait.Until(d => login.GetSwagErrorMessage());
+            Assert.AreEqual("Epic sadface: Username and password do not match any user in this service", login.GetSwagErrorMessage(), "username or password is incorrect");
 
         }
         
         [Test]
         public void TestLogSuccess()
         {
-            Login lg = new Login(driver);
+            Login login = new Login(driver);
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-            lg.enterSwagUserName("standard_user");
-            lg.enterSwagPassword("secret_sauce");
-            lg.SwagLoginClick();
+            login.EnterSwagUserName("standard_user");
+            login.EnterSwagPassword("secret_sauce");
+            login.SwagLoginClick();
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until(d => lg.getSwagSuccessMessage());
-            Assert.AreEqual("Products", lg.getSwagSuccessMessage(), "loged user name is mismatch");
+            wait.Until(d => login.GetSwagSuccessMessage());
+            Assert.AreEqual("Products", login.GetSwagSuccessMessage(), "loged user name is mismatch");
 
         }
         [Test]
         public void TestPurchase()
         {
-            Login lg = new Login(driver);
+            Login login = new Login(driver);
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-            lg.enterSwagUserName("visual_user");
-            lg.enterSwagPassword("secret_sauce");
-            lg.SwagLoginClick(); 
-            Product p = new Product(driver);
+            login.EnterSwagUserName("visual_user");
+            login.EnterSwagPassword("secret_sauce");
+            login.SwagLoginClick(); 
+            Product product = new Product(driver);
             driver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(20);
-            p.getItem1();
-            p.LinkItem1();            
-            driver.FindElement(p.BackMenu).Click();
-            p.getItem2();
-            p.LinkItem2();            
-            driver.FindElement(p.BackMenu).Click();
-            Assert.Greater(p.getItemCount(), 0, "Shopping card is empty");
+            product.GetItem1();
+            product.LinkItem1();            
+            driver.FindElement(product.backMenu).Click();
+            product.GetItem2();
+            product.LinkItem2();            
+            driver.FindElement(product.backMenu).Click();
+            Assert.Greater(product.GetItemCount(), 0, "Shopping card is empty");
         }
         [Test]
         public void TestShopping()
         {
-            Login lg = new Login(driver);
+            Login login = new Login(driver);
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-            lg.enterSwagUserName("visual_user");
-            lg.enterSwagPassword("secret_sauce");
-            lg.SwagLoginClick(); 
-            Product p = new Product(driver);
+            login.EnterSwagUserName("visual_user");
+            login.EnterSwagPassword("secret_sauce");
+            login.SwagLoginClick(); 
+            Product product = new Product(driver);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-            p.getItem1();
-            p.LinkItem1();
-            driver.FindElement(p.BackMenu).Click();
-            p.getItem2();
-            p.LinkItem2();
-            driver.FindElement(p.BackMenu).Click();
-            Purchase s=new Purchase(driver);
+            product.GetItem1();
+            product.LinkItem1();
+            driver.FindElement(product.backMenu).Click();
+            product.GetItem2();
+            product.LinkItem2();
+            driver.FindElement(product.backMenu).Click();
+            Purchase purchase=new Purchase(driver);
             driver.Manage().Timeouts().ImplicitWait=TimeSpan.FromSeconds(20);
-            driver.FindElement(s.Cart).Click();
-            driver.FindElement(s.Checkout).Click();
-            s.enterFirstName("Mark");
-            s.enterLastName("David");
-            s.enterPostal("707872");
-            driver.FindElement(s.Continue).Click();
-            Assert.Greater(s.getPrice(), 0.00, "Shopping card is empty");
+            driver.FindElement(purchase.cart).Click();
+            driver.FindElement(purchase.checkout).Click();
+            purchase.EnterFirstName("Mark");
+            purchase.EnterLastName("David");
+            purchase.EnterPostal("707872");
+            driver.FindElement(purchase._continue).Click();
+            Assert.Greater(purchase.GetPrice(), 0.00, "Shopping card is empty");
         }
         [TearDown]
         public void TearDown()

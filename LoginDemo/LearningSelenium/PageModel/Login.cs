@@ -11,73 +11,69 @@ namespace LearningSelenium.PageModel
     public class Login
     {
         WebDriver driver;
-        protected By UserName = By.XPath("//input[contains(@name,'username')]");
-        protected By Password = By.XPath("//input[contains(@name,'password')]");
-        protected By LogButton = By.XPath("//button[contains(@type,'submit') ]");
-        public By LogError = By.XPath("//p[contains(@class,'oxd-text') and contains(@class,'oxd-text--p') and contains(@class,'oxd-alert-content-text') ]");
-        public By LogSuccess = By.XPath("//h6[contains(@class,'oxd-text')and contains(@class,'oxd-text--h6') and contains(@class,'oxd-topbar-header-breadcrumb-module')]");
+        private By _userName = By.XPath("//input[contains(@name,'username')]");
+        private By _password = By.XPath("//input[contains(@name,'password')]");
+        private By logButton = By.XPath("//button[contains(@type,'submit')]");
+        private By logError = By.XPath("//p[contains(@class,'oxd-alert-content-text')]");
+        private By logSuccess = By.XPath("//span[contains(@class,'oxd-topbar-header-breadcrumb')]");
 
-        protected By SUserName = By.XPath("//input[contains(@id,'user-name')]");
-        protected By SPassword = By.XPath("//input[contains(@id,'password')]");
-        protected By SLogButton = By.XPath("//input[contains(@id,'login-button') ]");
-        public By SLogError = By.XPath("//div[contains(@class,'error-message-container') and contains(@class,'error')]/h3");
-        public By SLogSuccess = By.XPath("//div[contains(@class,'header_secondary_container')]/span[contains(@class,'title')]");
+        private By swagUserName = By.XPath("//input[contains(@id,'user-name')]");
+        private By swagPassword = By.XPath("//input[contains(@id,'password')]");
+        private By swagLogButton = By.XPath("//input[contains(@id,'login-button')]");
+        private By swagLogError = By.XPath("//div[contains(@class,'error')]");
+        private By swagLogSuccess = By.XPath("//div[contains(@class,'header_secondary_container')]/span[contains(@class,'title')]");
 
 
         public Login(WebDriver driver)
         {
             this.driver = driver;
         }
-        public void enterUserName(string userName)
+        public void EnterUserName(string userName)
         {
-            driver.FindElement(UserName).SendKeys(userName);
+            driver.FindElement(_userName).SendKeys(userName);
         }
-        public void enterPassword(string password)
+        public void EnterPassword(string password)
         {
-            driver.FindElement(Password).SendKeys(password);
+            driver.FindElement(_password).SendKeys(password);
         }
         public void LoginClick()
         {
-            driver.FindElement(LogButton).Click();
+            driver.FindElement(logButton).Click();
         }
-        public void enterSwagUserName(string userName)
+        public void EnterSwagUserName(string userName)
         {
-            driver.FindElement(SUserName).SendKeys(userName);
+            driver.FindElement(swagUserName).SendKeys(userName);
         }
-        public void enterSwagPassword(string password)
+        public void EnterSwagPassword(string password)
         {
-            driver.FindElement(SPassword).SendKeys(password);
+            driver.FindElement(swagPassword).SendKeys(password);
         }
         public void SwagLoginClick()
         {
-            driver.FindElement(SLogButton).Click();
+            driver.FindElement(swagLogButton).Click();
         }
-        public string getErrorMessage()
+        public string GetErrorMessage()
         {
-            string strErrorMsg = null;
-            var errorElement = driver.FindElement(LogError);
-            strErrorMsg = (errorElement.Text.Length>0) ? errorElement.Text : null;
+            var errorElement = driver.FindElement(logError);
+            string strErrorMsg = errorElement.Text.Length > 0 ? errorElement.Text : null;
             return strErrorMsg;
         }
-        public string getSuccessMessage()
+        public string GetSuccessMessage()
         {
-            string strSuccessMsg = null;
-            var sucessElement = driver.FindElement(LogSuccess);
-            strSuccessMsg = (sucessElement.Text.Length > 0) ? sucessElement.Text : null;
+            var sucessElement = driver.FindElement(logSuccess);
+            string strSuccessMsg = sucessElement.Text.Length > 0 ? sucessElement.Text : null;
             return strSuccessMsg;
         }
-        public string getSwagErrorMessage()
+        public string GetSwagErrorMessage()
         {
-            string strErrorMsg = null;
-            var errorElement = driver.FindElement(SLogError);
-            strErrorMsg = (errorElement.Text.Length > 0) ? errorElement.Text : null;
+            var errorElement = driver.FindElement(swagLogError);
+            string strErrorMsg = errorElement.Text.Length > 0 ? errorElement.Text : null;
             return strErrorMsg;
         }
-        public string getSwagSuccessMessage()
+        public string GetSwagSuccessMessage()
         {
-            string strSuccessMsg = null;
-            var sucessElement = driver.FindElement(SLogSuccess);
-            strSuccessMsg = (sucessElement.Text.Length > 0) ? sucessElement.Text : null;
+            var sucessElement = driver.FindElement(swagLogSuccess);
+            string strSuccessMsg = sucessElement.Text.Length > 0 ? sucessElement.Text : null;
             return strSuccessMsg;
         }
     }
