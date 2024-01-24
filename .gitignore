@@ -1,0 +1,27 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/LoginDemo/v17
+/.vs/LoginDemo/FileContentIndex
+/.vs
+/LoginDemo/.vs/LoginDemo
+/LoginDemo/LoginSF/bin/Debug/net6.0
+/LoginDemo/LoginSF/Features/Signin.feature.cs
+/LoginDemo/LoginSF/obj/Debug/net6.0
+/LoginDemo/LoginSF/obj
+/LoginDemo/LoginSF/ImplicitUsings.cs
+/LoginDemo/LoginSF/LoginSF.csproj
+/LoginDemo/packages
+/LoginDemo/Reg/bin
+/LoginDemo/Reg/obj/Debug
+/LoginDemo/Reg/Properties
+/LoginDemo/Reg/packages.config
+/LoginDemo/Reg/Reg.csproj
+/LoginDemo/Reg/Reg.csproj.user
+/LoginDemo/Reg/Web.config
+/LoginDemo/Reg/Web.Debug.config
+/LoginDemo/Reg/Web.Release.config
+/LoginDemo/LoginDemo.sln
+/LoginDemo/LearningSelenium
+/LoginDemo/.vs/ProjectEvaluation
