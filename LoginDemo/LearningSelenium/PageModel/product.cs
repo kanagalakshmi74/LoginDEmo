@@ -7,40 +7,39 @@ using System.Threading.Tasks;
 
 namespace LearningSelenium.PageModel
 {
-    public  class Product
+    public class Product
     {
         WebDriver driver;
-        protected By Item1 = By.LinkText("Sauce Labs Bike Light");
-        protected By AddItem1 = By.XPath("//button[@id='add-to-cart-sauce-labs-bike-light' or @id='remove-sauce-labs-bike-light']");
-        public By BackMenu = By.XPath("//button[contains(@id,'back-to-products')]");
-        protected By Item2 = By.PartialLinkText("Backpack");
-        protected By AddItem2 = By.XPath("//button[@id='add-to-cart-sauce-labs-backpack' or @id='remove-sauce-labs-backpack']");
-        protected By ItemCount = By.XPath("//a[contains(@class,'shopping_cart_link')]/span[contains(@class,'shopping_cart_badge')]");
+        private By item1 = By.LinkText("Sauce Labs Bike Light");
+        private By addItem1 = By.XPath("//button[@id='add-to-cart-sauce-labs-bike-light' or @id='remove-sauce-labs-bike-light']");
+        public By backMenu = By.XPath("//button[contains(@id,'back-to-products')]");
+        private By item2 = By.PartialLinkText("Backpack");
+        private By addItem2 = By.XPath("//button[@id='add-to-cart-sauce-labs-backpack' or @id='remove-sauce-labs-backpack']");
+        private By itemCount = By.XPath("//a[contains(@class,'shopping_cart_link')]/span[contains(@class,'shopping_cart_badge')]");
         public Product(WebDriver driver)
         {
             this.driver = driver;
         }
-        public void getItem1()
+        public void GetItem1()
         {
-            driver.FindElement(Item1).Click();
+            driver.FindElement(item1).Click();
         }
-        public void getItem2()
+        public void GetItem2()
         {
-            driver.FindElement(Item2).Click();
+            driver.FindElement(item2).Click();
         }
         public void LinkItem1()
         {
-            driver.FindElement(AddItem1).Click();
+            driver.FindElement(addItem1).Click();
         }
         public void LinkItem2()
         {
-            driver.FindElement(AddItem2).Click();
+            driver.FindElement(addItem2).Click();
         }
-        public int getItemCount()
+        public int GetItemCount()
         {
-            int cnt = 0;
-            var errorElement = driver.FindElement(ItemCount);
-            cnt= int.Parse(errorElement.Text);
+            var errorElement = driver.FindElement(itemCount);
+            int cnt = int.Parse(errorElement.Text);
             return cnt;
         }
     }

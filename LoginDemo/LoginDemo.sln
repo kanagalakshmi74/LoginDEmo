@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginSF", "LoginSF\LoginSF.csproj", "{EA2B5E87-6662-48D1-9F5A-8198E1969DF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reg", "Reg\Reg.csproj", "{BCE723EF-CA33-421A-8D9A-B82C1523BA83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSelenium", "LearningSelenium\LearningSelenium.csproj", "{C0A29918-5960-4078-9EBF-09DE74D97A56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA2B5E87-6662-48D1-9F5A-8198E1969DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA2B5E87-6662-48D1-9F5A-8198E1969DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA2B5E87-6662-48D1-9F5A-8198E1969DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA2B5E87-6662-48D1-9F5A-8198E1969DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE723EF-CA33-421A-8D9A-B82C1523BA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE723EF-CA33-421A-8D9A-B82C1523BA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE723EF-CA33-421A-8D9A-B82C1523BA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE723EF-CA33-421A-8D9A-B82C1523BA83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0A29918-5960-4078-9EBF-09DE74D97A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0A29918-5960-4078-9EBF-09DE74D97A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0A29918-5960-4078-9EBF-09DE74D97A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0A29918-5960-4078-9EBF-09DE74D97A56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5127141D-51B7-4616-882D-7B9E253ED50C}
+	EndGlobalSection
+EndGlobal

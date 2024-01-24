@@ -11,12 +11,10 @@
 /.vs/LoginDemo/v17
 /.vs/LoginDemo/FileContentIndex
 /LoginDemo/.vs/LoginDemo
-/LoginDemo/LoginSF/bin/Debug/net6.0
 /LoginDemo/LoginSF/Features/Signin.feature.cs
 /LoginDemo/LoginSF/obj/Debug/net6.0
 /LoginDemo/LoginSF/obj
 /LoginDemo/LoginSF/ImplicitUsings.cs
-/LoginDemo/LoginSF/LoginSF.csproj
 /LoginDemo/packages
 /LoginDemo/Reg/bin
 /LoginDemo/Reg/obj/Debug
@@ -27,3 +25,5 @@
 /LoginDemo/Reg/Web.Debug.config
 /LoginDemo/Reg/Web.Release.config
 /LoginDemo/.vs/ProjectEvaluation
+/LoginDemo/LoginSF/bin/Debug/net6.0
+/LoginDemo/Reg/obj/Release

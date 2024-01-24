@@ -10,40 +10,40 @@ namespace LearningSelenium.PageModel
     public class Purchase
     {
         WebDriver driver;
-        public By Cart = By.XPath("//a[contains(@class,'shopping_cart_link')]");
-        public By Checkout = By.XPath("//button[contains(@id,'checkout')]");
-        protected By FName = By.XPath("//input[contains(@id,'first-name')]");
-        protected By LName = By.XPath("//input[contains(@id,'last-name')]");
-        protected By Postal = By.XPath("//input[contains(@id,'postal-code')]");
-        public By Continue = By.XPath("//input[contains(@id,'continue') and contains(@type,'submit')]");
-        protected By Price = By.XPath("//div[contains(@class,'summary_info_label') and contains(@class,'summary_total_label')]");
+        public By cart = By.XPath("//a[contains(@class,'shopping_cart_link')]");
+        public By checkout = By.XPath("//button[contains(@id,'checkout')]");
+        private By fName = By.XPath("//input[contains(@id,'first-name')]");
+        private By lName = By.XPath("//input[contains(@id,'last-name')]");
+        private By postal = By.XPath("//input[contains(@id,'postal-code')]");
+        public By _continue = By.XPath("//input[contains(@id,'continue') and contains(@type,'submit')]");
+        private By _price = By.XPath("//div[contains(@class,'summary_info_label') and contains(@class,'summary_total_label')]");
         public Purchase(WebDriver driver)
         {
             this.driver = driver;
         }
-        public void enterFirstName(string firstName)
+        public void EnterFirstName(string firstName)
         {
-            driver.FindElement(FName).SendKeys(firstName);
+            driver.FindElement(fName).SendKeys(firstName);
         }
-        public void enterLastName(string lastName)
+        public void EnterLastName(string lastName)
         {
-            driver.FindElement(LName).SendKeys(lastName);
+            driver.FindElement(lName).SendKeys(lastName);
         }
-        public void enterPostal(string postalCode)
+        public void EnterPostal(string postalCode)
         {
-            driver.FindElement(Postal).SendKeys(postalCode);
+            driver.FindElement(postal).SendKeys(postalCode);
         }
         public void ContinueButton()
         {
-            driver.FindElement(Continue).Click();
+            driver.FindElement(_continue).Click();
         }
-        public decimal getPrice()
+        public decimal GetPrice()
         {
-            decimal price =0;
-            var errorElement = driver.FindElement(Price);
-            price = decimal.Parse(errorElement.Text.Substring(errorElement.Text.LastIndexOf('$') + 1));
+            var errorElement = driver.FindElement(_price);
+            decimal price = decimal.Parse(errorElement.Text.Substring(errorElement.Text.LastIndexOf('$') + 1));
             return price;
         }
 
     }
 }
+
