@@ -16,26 +16,32 @@ namespace LearningSelenium.PageModel
         private By item2 = By.PartialLinkText("Backpack");
         private By addItem2 = By.XPath("//button[@id='add-to-cart-sauce-labs-backpack' or @id='remove-sauce-labs-backpack']");
         private By itemCount = By.XPath("//a[contains(@class,'shopping_cart_link')]/span[contains(@class,'shopping_cart_badge')]");
+
         public Product(WebDriver driver)
         {
             this.driver = driver;
         }
+
         public void GetItem1()
         {
             driver.FindElement(item1).Click();
         }
+
         public void GetItem2()
         {
             driver.FindElement(item2).Click();
         }
+
         public void LinkItem1()
         {
             driver.FindElement(addItem1).Click();
         }
+
         public void LinkItem2()
         {
             driver.FindElement(addItem2).Click();
         }
+
         public int GetItemCount()
         {
             var errorElement = driver.FindElement(itemCount);
