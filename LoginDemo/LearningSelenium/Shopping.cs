@@ -34,7 +34,7 @@ namespace LearningSelenium
             login.LoginClick();
 
             WebDriverWait wait= new WebDriverWait(driver,TimeSpan.FromSeconds(20));
-            wait.Until(d => login.GetErrorMessage());
+            wait.Until(webdriver => login.GetErrorMessage());
             Assert.AreEqual("Invalid credentials", login.GetErrorMessage(),"username or password is incorrect");
 
         }
@@ -49,7 +49,7 @@ namespace LearningSelenium
             login.EnterPassword("admin123");
             login.LoginClick();
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until(d => login.GetSuccessMessage());
+            wait.Until(webdriver => login.GetSuccessMessage());
             Assert.AreEqual("Dashboard", login.GetSuccessMessage(), "Dashboard not loading...");
 
         }
@@ -65,7 +65,7 @@ namespace LearningSelenium
             login.SwagLoginClick();
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until(d => login.GetSwagErrorMessage());
+            wait.Until(webdriver => login.GetSwagErrorMessage());
             Assert.AreEqual("Epic sadface: Username and password do not match any user in this service", login.GetSwagErrorMessage(), "username or password is incorrect");
 
         }
@@ -80,7 +80,7 @@ namespace LearningSelenium
             login.EnterSwagPassword("secret_sauce");
             login.SwagLoginClick();
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until(d => login.GetSwagSuccessMessage());
+            wait.Until(webdriver => login.GetSwagSuccessMessage());
             Assert.AreEqual("Products", login.GetSwagSuccessMessage(), "loged user name is mismatch");
 
         }
