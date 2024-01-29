@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginSF", "LoginSF\LoginSF.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reg", "Reg\Reg.csproj", "{BCE723EF-CA33-421A-8D9A-B82C1523BA83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSelenium", "LearningSelenium\LearningSelenium.csproj", "{C0A29918-5960-4078-9EBF-09DE74D97A56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSelenium", "LearningSelenium\LearningSelenium.csproj", "{C0A29918-5960-4078-9EBF-09DE74D97A56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
