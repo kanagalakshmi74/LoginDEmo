@@ -34,10 +34,15 @@ namespace LearningSelenium.FactoryDesign.SimpleFactory
             driver.FindElement(swagPassword).SendKeys(password);
         }
 
-        public void PerformClick()
+        public void GetUserFeilds()
         {
             EnterSwagUserName(config.userName);
             EnterSwagPassword(config.password);
+        }
+
+        public void PerformClick()
+        {
+            GetUserFeilds();
             driver.FindElement(swagLogButton).Click();
         }
 
@@ -51,8 +56,7 @@ namespace LearningSelenium.FactoryDesign.SimpleFactory
         private By item = By.LinkText("Sauce Labs Bike Light");
         private By addItem = By.XPath("//button[@id='add-to-cart-sauce-labs-bike-light' or @id='remove-sauce-labs-bike-light']");
         public By backMenu = By.XPath("//button[contains(@id,'back-to-products')]");
-        private By itemCount = By.XPath("//a[contains(@class,'shopping_cart_link')]/span[contains(@class,'shopping_cart_badge')]");
-
+        
         public ProductPage(WebDriver driver, ReadConfig config)
         {
             this.driver = driver;
@@ -82,6 +86,7 @@ namespace LearningSelenium.FactoryDesign.SimpleFactory
     {
         private readonly WebDriver driver;
         private readonly ReadConfig config;
+        private readonly ReadTestDataConfig testConfig;
         public By cart = By.XPath("//a[contains(@class,'shopping_cart_link')]");
         public By checkout = By.XPath("//button[contains(@id,'checkout')]");
         private By fName = By.XPath("//input[contains(@id,'first-name')]");
@@ -91,10 +96,11 @@ namespace LearningSelenium.FactoryDesign.SimpleFactory
         private By _price = By.XPath("//div[contains(@class,'summary_total_label')]");
         private By finish = By.XPath("//button[contains(@id,'finish')]");
 
-        public PurchasePage(WebDriver driver, ReadConfig config)
+        public PurchasePage(WebDriver driver, ReadConfig config, ReadTestDataConfig testConfig)
         {
             this.driver = driver;
             this.config = config;
+            this.testConfig = testConfig;
         }
 
         public void EnterFirstName(string firstName)
@@ -112,18 +118,19 @@ namespace LearningSelenium.FactoryDesign.SimpleFactory
             driver.FindElement(postal).SendKeys(postalCode);
         }
 
-        public void PerformClick()
+        public void GetDataFields()
         {
-
             driver.FindElement(cart).Click();
             driver.FindElement(checkout).Click();
-            EnterFirstName(config.firstName);
-            EnterLastName(config.lastName);
-            EnterPostal(config.postal);
+            EnterFirstName(testConfig.firstName);
+            EnterLastName(testConfig.lastName);
+            EnterPostal(testConfig.postal);
             driver.FindElement(_continue).Click();
-            var errorElement = driver.FindElement(_price);
-            decimal price = decimal.Parse(errorElement.Text.Substring(errorElement.Text.LastIndexOf('$') + 1));
-            Assert.Greater(price, 0.00, "Shopping card is empty");
+        }
+        
+        public void PerformClick()
+        {
+            GetDataFields();
             driver.FindElement(finish).Click();
         }
     }

@@ -2,7 +2,5 @@
   "baseUrl": "https://www.saucedemo.com/",
   "userName": "standard_user",
   "password": "secret_sauce",
-  "firstName": "John",
-  "lastName": "David",
-  "postal": "794943"
+  "waitTime": 20
 }

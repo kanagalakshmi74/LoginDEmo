@@ -6,11 +6,13 @@ namespace LearningSelenium.FactoryDesign.SimpleFactory
     {
         private WebDriver driver;
         private ReadConfig config;
+        private ReadTestDataConfig testConfig;
 
-        public FProduct(WebDriver driver, ReadConfig config)
+        public FProduct(WebDriver driver, ReadConfig config, ReadTestDataConfig testConfig)
         {
             this.driver = driver;
             this.config = config;
+            this.testConfig = testConfig;
         }
 
 
@@ -24,7 +26,7 @@ namespace LearningSelenium.FactoryDesign.SimpleFactory
                 case "product":
                     return new ProductPage(driver, config);
                 case "purchase":
-                    return new PurchasePage(driver, config);
+                    return new PurchasePage(driver, config, testConfig);
                 default:
                     throw new ArgumentException("Invalid type");
             }

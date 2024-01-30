@@ -8,35 +8,47 @@ namespace LearningSelenium.FactoryDesign.FactoryMethodDesign
     {
         WebDriver driver;
         Utility utilityObj;
-        ReadConfig config = ReadConfig.GetReadConfig("C:/Kanaga/repo/Login/LoginDemo/LoginDemo/LearningSelenium/FactoryDesign/DataConfig.json");
+        //absolute path
+        //ReadConfig config = ReadConfig.GetReadConfig("C:/Kanaga/repo/Login/LoginDemo/LoginDemo/LearningSelenium/FactoryDesign/DataConfig.json");
+        //relative path
+        static string filePath = @"..\..\..\DataConfig.json";
+        ReadConfig config =ReadConfig.GetReadConfig(filePath);
+        static string testDataFilePath = @"..\..\..\TestDataConfig.json";
+        ReadTestDataConfig testConfig = ReadTestDataConfig.GetTestDataConfig(testDataFilePath);
 
         [SetUp]
         public void Setup()
         {
             driver = new ChromeDriver();
             utilityObj = Utility.GetInstance(driver);
-            utilityObj.SetImplicitWait(20);
+            utilityObj.SetImplicitWait(config.waitTime);
         }
 
         [Test]
         public void TestMethod()
         {
             driver.Navigate().GoToUrl(config.baseUrl);
-            utilityObj.SetImplicitWait(20);
-            IFMProduct obj = new FMLogin().FactoryMethod(driver, config);
+            utilityObj.SetImplicitWait(config.waitTime);
+            IFMProduct obj = new FMLogin().FactoryMethod(driver, config,testConfig);
 
             //login
             obj.PerformClick();
-            utilityObj.SetImplicitWait(20);
+            utilityObj.SetImplicitWait(config.waitTime);
 
             //products
-            obj = new FMItems().FactoryMethod(driver, config);
+            obj = new FMItems().FactoryMethod(driver, config, testConfig);
             obj.PerformClick();
-            utilityObj.SetImplicitWait(20);
+            utilityObj.SetImplicitWait(config.waitTime);
 
             //purchase
-            obj = new FMPurchase().FactoryMethod(driver, config);
+            obj = new FMPurchase().FactoryMethod(driver, config, testConfig);
             obj.PerformClick();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            driver.Close();
         }
 
     }

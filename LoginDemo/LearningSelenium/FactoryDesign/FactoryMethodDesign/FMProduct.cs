@@ -9,7 +9,7 @@ namespace LearningSelenium.FactoryDesign.FactoryMethodDesign
         {
         }
 
-        public abstract IFMProduct FactoryMethod(WebDriver driver, ReadConfig config);
+        public abstract IFMProduct FactoryMethod(WebDriver driver, ReadConfig config, ReadTestDataConfig testConfig);
 
     }
 
@@ -19,9 +19,9 @@ namespace LearningSelenium.FactoryDesign.FactoryMethodDesign
 
         public FMLogin() {}
 
-        public override IFMProduct FactoryMethod(WebDriver driver, ReadConfig config)
+        public override IFMProduct FactoryMethod(WebDriver driver, ReadConfig config, ReadTestDataConfig testConfig)
         {
-            return new FMDLogin(driver, config);
+            return new FMDLogin(driver, config,testConfig);
         }
     }
 
@@ -30,9 +30,9 @@ namespace LearningSelenium.FactoryDesign.FactoryMethodDesign
 
         public FMItems(){}
 
-        public override IFMProduct FactoryMethod(WebDriver driver, ReadConfig config)
+        public override IFMProduct FactoryMethod(WebDriver driver, ReadConfig config, ReadTestDataConfig testConfig)
         {
-            return new FMDItems(driver, config);
+            return new FMDItems(driver, config,testConfig);
         }
     }
 
@@ -40,9 +40,9 @@ namespace LearningSelenium.FactoryDesign.FactoryMethodDesign
     {
         public FMPurchase(){}
 
-        public override IFMProduct FactoryMethod(WebDriver driver, ReadConfig config)
+        public override IFMProduct FactoryMethod(WebDriver driver, ReadConfig config, ReadTestDataConfig testConfig)
         {
-            return new FMDPurchase(driver, config);
+            return new FMDPurchase(driver, config, testConfig);
         }
     }
 }

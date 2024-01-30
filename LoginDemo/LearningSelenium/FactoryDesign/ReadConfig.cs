@@ -7,9 +7,7 @@ namespace LearningSelenium.FactoryDesign
         public string baseUrl {  get; set; }    
         public string userName { get; set; }
         public string password { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string postal { get; set; }
+        public int waitTime { get; set; }
 
         public static ReadConfig GetReadConfig(string filepath)
         {
